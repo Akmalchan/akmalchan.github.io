@@ -41,7 +41,7 @@
             <rect x="69%" y="18%" width="100" height="100" fill="#222222" opacity="0.97" />
             <text x="7%" y="30%" class="svg-text">Akmal</text>
             <text x="7%" y="44%" class="svg-text">Shovkatov</text>
-            <image x="70%" y="20%" width="90" height="90" href="UI-content/Photo1.png" clip-path="url(#image-clip)"/>
+            <image x="70%" y="20%" width="90" height="90" href="UI-content/Photo1.webp" clip-path="url(#image-clip)"/>
         </g>
     </svg>
     <svg id="mobile-svg" viewBox="0 0 300 450" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" overflow="hidden">
@@ -255,7 +255,7 @@
 
 <!--------------------------------------------------------------------------------------TEXT-->
 <section class="bio-section">
-    <p>Hi! I am Akmal, sophomore at the San Francisco State University studying Computer Science with concentrations on
+    <p>Hi! I am Akmal, Junior at the San Francisco State University studying Computer Science with concentrations on
         smart devices and artificial intelligence. I am passionate about using technologies to find solutions
         for real-life problems. In particular, my technical interests include large-scale software systems,
         computer vision models, cloud solutions, smart devices, autonomous machines, and financial tech.
@@ -269,6 +269,22 @@
 </div>
 
 <section class="articles">
+    <article>
+        <div class="article-wrapper" onclick="openModal('modal6')">
+            <figure>
+                <img src="UI-content/MarketForge_Intro.jpg" alt="MarketForge AI preview" />
+            </figure>
+            <div class="article-body">
+                <h2>Market Analysis AI</h2>
+                <p class="article-subtitle">
+                    AI-powered marketing and analytics platform for small businesses,
+                    combining content generation, brand strategy, and business insights
+                </p>
+                <img class="article-logo" src="UI-content/python.png" alt="Python logo" />
+                <img class="article-logo" src="UI-content/react.png" alt="React logo" />
+            </div>
+        </div>
+    </article>
     <article>
         <div class="article-wrapper" onclick="openModal('modal5')">
             <figure>
@@ -346,12 +362,13 @@
             </div>
         </div>
     </article>
+
 </section>
 
 <script>
     function openModal(modalId) {
         var modal = document.getElementById(modalId);
-        modal.style.display = "block";
+        modal.classList.add("show");
         document.body.style.overflow = "hidden";
         // Add a new history entry
         history.pushState({ modalId: modalId }, null, null);
@@ -360,7 +377,7 @@
 
     function closeModal(modalId) {
         var modal = document.getElementById(modalId);
-        modal.style.display = "none";
+        modal.classList.remove("show");
         document.body.style.overflow = "auto";
         // Remove the last history entry
         history.back();
@@ -380,7 +397,7 @@
     function closeAllModals() {
         var modals = document.getElementsByClassName('modal');
         for (var i = 0; i < modals.length; i++) {
-            modals[i].style.display = 'none';
+            modals[i].classList.remove('show');
         }
         document.body.style.overflow = 'auto';
     }
@@ -391,12 +408,10 @@
         <span class="closeBtn" onclick="closeModal('modal1')">&times;</span>
         <div class="content-wrapper">
             <div class="left-section">
-                <video class="big-image" autoplay loop muted>
-                    <div class="video-text">Loading video...</div>
+                <video class="big-image" autoplay loop muted playsinline>
                     <source src="UI-content/The_World_1.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <div class="video-text">Loading video...</div>
                 <div class="small-images">
                     <img src="UI-content/The_World_2.jpg" alt="Image 2" class="small-image">
                     <img src="UI-content/Project_V_3.png" alt="Image 3" class="small-image">
@@ -427,7 +442,6 @@
                     <div class="link-button-container">
                         <a href="https://drive.google.com/drive/folders/1HV-oq8yXiuuhS-OLDWSFOZL92G2Yqpi2?usp=sharing"
                            class="link-button" style="font-family: Consolas, monospace; font-size: 19px;" target="_blank">Source Code</a>
-                        <a href="#" class="link-button" style="font-family: Consolas, monospace; font-size: 19px;" target="_blank">Ready to Play App</a>
                     </div>
                 </div>
             </div>
@@ -474,7 +488,6 @@
                     <div class="link-button-container">
                         <a href="https://drive.google.com/drive/folders/1kSBqmFqUre1gT2tTtTxEg1qGthqyfr36?usp=sharing"
                            class="link-button" style="font-family: Consolas, monospace; font-size: 19px;" target="_blank">Source Code</a>
-                        <a href="#" class="link-button" style="font-family: Consolas, monospace; font-size: 19px;" target="_blank">Ready to Play App</a>
                     </div>
                 </div>
             </div>
@@ -587,7 +600,7 @@
             <div class="right-section">
                 <div class="text-content">
                     <h1 style="font-family: Consolas, monospace; font-size: 40px; color: black;">MoveMate (SFHacks 2025)</h1>
-                    <h2 style="font-family: Consolas, monospace; font-size: 20px; color: black; margin-top: -15px;">Inclusive Fitness App for the Visually Impaired</h2>
+                    <h2 style="font-family: Consolas, monospace; font-size: 20px; color: black; margin-top: -15px;">Inclusive Fitness App for the Visually Impaired / SFHacks Hackathon</h2>
                     <p style="font-family: Consolas, monospace; font-size: 18px; color: black; margin-top: 5px;">
                         MoveMate is a web-based, voice-guided fitness app designed for visually impaired users.
                         Most workout platforms rely on visuals, leaving out a key community. MoveMate solves
@@ -598,9 +611,6 @@
                         <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• Real-time body tracking with TensorFlow.js and MoveNet</span>
                         <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• Voice input and feedback using the Web Speech API</span>
                         <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• Fully audio accessible interface with high contrast and large fonts</span>
-                        <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• HTML, CSS, and JavaScript-based frontend</span>
-                        <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• Designed for independence, safety, and confidence</span>
-                        <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• Built with inclusive UX principles and browser compatibility in mind</span>
                     </p>
                 </div>
                 <div class="link-buttons">
@@ -613,6 +623,49 @@
                         <a href="https://devpost.com/software/movemate-3hrcj5" class="link-button" style="font-family: Consolas, monospace; font-size: 19px;" target="_blank">DevPost</a>
                 </div>
 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal6" class="modal">
+    <div class="modal-content">
+        <span class="closeBtn" onclick="closeModal('modal6')">&times;</span>
+        <div class="content-wrapper">
+            <div class="left-section">
+                <img src="UI-content/MarketForge_1.jpg" alt="MarketForge main preview" class="big-image">
+                <div class="small-images">
+                    <img src="UI-content/MarketForge_2.jpg" alt="MarketForge screenshot 1" class="small-image">
+                    <img src="UI-content/MarketForge_3.jpg" alt="MarketForge screenshot 2" class="small-image">
+                </div>
+            </div>
+            <div class="right-section">
+                <div class="text-content">
+                    <h1 style="font-family: Consolas, monospace; font-size: 40px; color: black;">MarketForge AI</h1>
+                    <h2 style="font-family: Consolas, monospace; font-size: 20px; color: black; margin-top: -15px;">AI Marketing and Analytics Platform / UCB AI Hackathon</h2>
+                    <p style="font-family: Consolas, monospace; font-size: 18px; color: black; margin-top: 5px;">
+                        MarketForge AI is a multimodal platform built to help solo entrepreneurs,
+                        startup teams, and small businesses handle marketing, branding, and analytics
+                        in one place. The system uses agent-based workflows to analyze business goals,
+                        generate personalized content, and provide performance insights through a
+                        conversational interface.<br><br>
+                        <span class="mobile-text-hide">&nbsp;This project features:</span>
+                        <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• AI-generated captions, ads, slogans, and email content</span>
+                        <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• Smart manager agent for business and goal analysis</span>
+                        <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• Professional analytics including engagement and conversion insights</span>
+                        <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• Dynamic roadmap and strategy visualization</span>
+                        <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• React and Next.js frontend with dashboard-style interaction</span>
+                        <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• Flask backend with Fetch.ai uAgents and MongoDB integration</span>
+                    </p>
+                </div>
+                <div class="link-buttons">
+                    <a href="https://fetch.ai/" target="_blank">
+                        <img src="UI-content/python.png" alt="Fetch.ai logo">
+                    </a>
+                    <div class="link-button-container">
+                        <a href="https://github.com/shokhabbos-mukhammatov/MarketForgeAI" class="link-button" style="font-family: Consolas, monospace; font-size: 19px;" target="_blank">Source Code</a>
+                        <a href="https://devpost.com/software/marketforge-ai#updates" class="link-button" style="font-family: Consolas, monospace; font-size: 19px;" target="_blank">DevPost</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -643,7 +696,7 @@
 
 <!--FOOTER------------------------------------------------------------------------------------>
 <div class="version"  style="font-family: Consolas, monospace; color: rgba(255, 255, 255, 0.40); font-size: 16px">
-    Open Sharing, Shovkatov Akmal, June 2025 ver.00901062025
+    Open Sharing, Shovkatov Akmal, March 2026 ver.01030032026
 </div>
 
 </body>
