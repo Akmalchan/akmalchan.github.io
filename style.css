@@ -46,13 +46,13 @@ html {
     pointer-events: none;
 }
 .svg-text {
-     fill: #ffffff;
-     font-size: 48px;
-     font-family: Arial, sans-serif;
-     dominant-baseline: middle;
-     text-anchor: start;
-     text-shadow: 20px 20px 40px #222222;
- }
+    fill: #ffffff;
+    font-size: 48px;
+    font-family: Arial, sans-serif;
+    dominant-baseline: middle;
+    text-anchor: start;
+    text-shadow: 20px 20px 40px #222222;
+}
 
 /*-- BIO --------------------------------------------------------------------*/
 .bio-section {
@@ -430,6 +430,41 @@ article:has(:hover, :focus) {
     }
 }
 
+
+/*-- PROJECT W / AI WARDROBE VERTICAL MEDIA FIX ----------------------------*/
+.project-w-modal .left-section {
+    background: linear-gradient(135deg, #4a4a4a 0%, #777777 45%, #3a3a3a 100%);
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 12px;
+}
+
+.project-w-modal .big-image,
+.project-w-modal .project-w-vertical-media {
+    object-fit: contain;
+    background: radial-gradient(circle at center, #777777 0%, #4d4d4d 55%, #2e2e2e 100%);
+}
+
+.project-w-modal .small-image {
+    object-fit: contain;
+    background: radial-gradient(circle at center, #777777 0%, #4d4d4d 55%, #2e2e2e 100%);
+}
+
+
+/*-- PROJECT W / AI WARDROBE CARD VERTICAL PREVIEW FIX ---------------------*/
+.article-wrapper:has(.project-w-card-media) figure {
+    background: radial-gradient(circle at center, #777777 0%, #4d4d4d 55%, #2e2e2e 100%);
+}
+
+.article-wrapper:has(.project-w-card-media) figure img.project-w-card-media {
+    width: calc(100% - 32px);
+    height: 100%;
+    max-width: calc(100% - 32px);
+    object-fit: contain;
+    border-radius: 16px;
+}
+
+
 /*-- MOBILE OPTIMIZER ------------------------------------------------------*/
 @media screen and (max-width: 960px) {
     .articles {
@@ -466,8 +501,7 @@ article:has(:hover, :focus) {
         font-size: 6px;
     } /*for footer*/
     .modal-content {
-        max-height: 95%;
-        transform: translate(0, 10%);
+        max-height: 92vh;
     }
     .content-wrapper {
         flex-direction: column; /* Stack sections vertically */
@@ -483,8 +517,8 @@ article:has(:hover, :focus) {
         align-items: end;
     }
     .closeBtn {
-         top: -5px;
-         right: 15px;
+        top: -5px;
+        right: 15px;
     }
     .mobile-text-hide {
         display: none !important;
@@ -501,4 +535,62 @@ article:has(:hover, :focus) {
     position: absolute;
     white-space: nowrap;
     width: 1px;
+}
+
+@media screen and (max-width: 640px) {
+    .head-articles {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .articles {
+        grid-template-columns: 1fr;
+        padding-inline: 14px;
+    }
+
+    .article-button {
+        padding-left: 0;
+    }
+
+    .article-button h2 {
+        margin: 0;
+        font-size: 1.25rem;
+    }
+
+    .bio-section {
+        font-size: 18px;
+    }
+
+    .contact-email {
+        font-size: 18px;
+        overflow-wrap: anywhere;
+    }
+
+    .modal {
+        padding: 8px;
+    }
+
+    .modal-content {
+        width: 100%;
+        max-height: 94vh;
+        padding: 18px;
+    }
+
+    .content-wrapper {
+        gap: 16px;
+    }
+
+    .link-buttons {
+        align-items: stretch;
+    }
+
+    .link-button-container {
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .link-button {
+        text-align: center;
+        white-space: normal;
+    }
 }

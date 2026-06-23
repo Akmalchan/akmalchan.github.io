@@ -14,24 +14,24 @@
     <svg id="pc-svg" viewBox="0 0 600 278" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" overflow="hidden">
         <defs>
             <clipPath id="svg-clip-pc">
-            <rect x="0" y="0" width="600" height="275" />
-        </clipPath>
+                <rect x="0" y="0" width="600" height="275" />
+            </clipPath>
             <pattern id="pattern-pc" x="0" y="0" width="0.025" height="0.025">
-            <rect id="block1-pc" x="3" y="3" width="1.5" height="1.5" fill="#aaaaaa" />
-            <rect id="block2-pc" x="3" y="3" width="1.5" height="1.5" fill="#aaaaaa" />
-        </pattern>
+                <rect id="block1-pc" x="3" y="3" width="1.5" height="1.5" fill="#aaaaaa" />
+                <rect id="block2-pc" x="3" y="3" width="1.5" height="1.5" fill="#aaaaaa" />
+            </pattern>
             <mask id="mask-pc">
-            <rect x="0" y="0" width="600" height="300" fill="#000000" />
-            <circle id="c1-pc" cx="300" cy="150" r="210" fill="#ffffff" />
-            <circle id="c2-pc" cx="300" cy="150" r="180" fill="#000000" />
-            <circle id="c3-pc" cx="300" cy="150" r="150" fill="#ffffff" />
-            <circle id="c4-pc" cx="300" cy="150" r="120" fill="#000000" />
-            <circle id="c5-pc" cx="300" cy="150" r="90" fill="#ffffff" />
-            <circle id="c6-pc" cx="300" cy="150" r="60" fill="#000000" />
-            <circle id="c7-pc" cx="300" cy="150" r="30" fill="#ffffff" />
-            <circle id="c8-pc" cx="300" cy="150" r="0" fill="#000000" />
-            <circle id="c9-pc" cx="300" cy="150" r="0" fill="#ffffff" />
-        </mask>
+                <rect x="0" y="0" width="600" height="300" fill="#000000" />
+                <circle id="c1-pc" cx="300" cy="150" r="210" fill="#ffffff" />
+                <circle id="c2-pc" cx="300" cy="150" r="180" fill="#000000" />
+                <circle id="c3-pc" cx="300" cy="150" r="150" fill="#ffffff" />
+                <circle id="c4-pc" cx="300" cy="150" r="120" fill="#000000" />
+                <circle id="c5-pc" cx="300" cy="150" r="90" fill="#ffffff" />
+                <circle id="c6-pc" cx="300" cy="150" r="60" fill="#000000" />
+                <circle id="c7-pc" cx="300" cy="150" r="30" fill="#ffffff" />
+                <circle id="c8-pc" cx="300" cy="150" r="0" fill="#000000" />
+                <circle id="c9-pc" cx="300" cy="150" r="0" fill="#ffffff" />
+            </mask>
         </defs>
         <g id="container-pc" class="hitarea">
             <rect x="0" y="0" width="600" height="300" fill="#222222" />
@@ -79,43 +79,33 @@
     </svg>
 </header>
 
-<script>
-    function loadSvgForScreenSize() {
-        var pcSvg = document.getElementById('pc-svg');
-        var mobileSvg = document.getElementById('mobile-svg');
-
-        if (window.matchMedia("(max-width: 960px)").matches) {
-            // Mobile screen
-            mobileSvg.style.display = 'block';
-            pcSvg.style.display = 'none';
-        } else {
-            // PC screen
-            pcSvg.style.display = 'block';
-            mobileSvg.style.display = 'none';
-        }
-    }
-
-    window.onload = loadSvgForScreenSize;
-
-    window.onresize = loadSvgForScreenSize;
-</script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 <script>
+    var pcAnimationStarted = false;
+    var mobileAnimationStarted = false;
+
     function loadSvgForScreenSize() {
         var pcSvg = document.getElementById('pc-svg');
         var mobileSvg = document.getElementById('mobile-svg');
+        var isMobileLayout = window.matchMedia("(max-width: 960px)").matches;
 
-        if (window.matchMedia("(max-width: 600px)").matches) {
-            // Mobile screen
+        if (isMobileLayout) {
             mobileSvg.style.display = 'block';
             pcSvg.style.display = 'none';
-            animateMobileSvg();
+
+            if (!mobileAnimationStarted) {
+                animateMobileSvg();
+                mobileAnimationStarted = true;
+            }
         } else {
-            // PC screen
             pcSvg.style.display = 'block';
             mobileSvg.style.display = 'none';
-            animatePcSvg();
+
+            if (!pcAnimationStarted) {
+                animatePcSvg();
+                pcAnimationStarted = true;
+            }
         }
     }
 
@@ -209,9 +199,8 @@
             .to($c9, { duration: bullseyeDur * 0.5, attr: { r: 30 }, ease: bullseyeEase }, bullseyeDur * 0.5);
     }
 
-    loadSvgForScreenSize();
-
-    window.onresize = loadSvgForScreenSize;
+    window.addEventListener('load', loadSvgForScreenSize);
+    window.addEventListener('resize', loadSvgForScreenSize);
 </script>
 
 <section class="head-articles">
@@ -219,7 +208,7 @@
         <button onclick="openPDF()" class="article-button" >
             <img src="UI-content/paper%20(1).png" alt="Button Image">
             <div class="article-body">
-                <h2>Download CV</h2>
+                <h2>Resume</h2>
             </div>
         </button>
     </article>
@@ -227,7 +216,7 @@
         <button class="article-button" id="Contact Links Button">
             <img src="UI-content/contact.png" alt="Button Image">
             <div class="article-body">
-                <h2>Contact Info</h2>
+                <h2>Contacts</h2>
             </div>
         </button>
     </article>
@@ -236,7 +225,7 @@
             <button class="article-button small-fix">
                 <img src="UI-content/github2.png" alt="Button Image">
                 <div class="article-body">
-                    <h2>GitHub Profile</h2>
+                    <h2>GitHub</h2>
                 </div>
             </button>
         </a>
@@ -255,10 +244,30 @@
 
 <!--------------------------------------------------------------------------------------TEXT-->
 <section class="bio-section">
-    <p>Hi! I am Akmal, Junior at the San Francisco State University studying Computer Science with concentrations on
-        smart devices and artificial intelligence. I am passionate about using technologies to find solutions
-        for real-life problems. In particular, my technical interests include large-scale software systems,
-        computer vision models, cloud solutions, smart devices, autonomous machines, and financial tech.
+    <p>Hi! I am Akmal Shovkatov, a Computer Science student at San Francisco State University focused on AI systems,
+        full-stack engineering, cloud infrastructure, and smart-device software. I build practical products across
+        fintech, travel, accessibility, and developer tooling, with experience shipping production APIs, AI agents,
+        React/Next.js frontends, Python backends, and mobile-first applications.
+    </p>
+</section>
+
+<!-- EXPERIENCE SECTION----------------------------------------------------------------------->
+<hr class="separator">
+<div class="section-description unselectable"  style="font-family: Consolas, monospace">
+    < Experience >
+</div>
+<section class="bio-section experience-section">
+    <p>
+        Blaze Payments Inc. (YC24) | Software Engineering Intern | May 2026 - Present<br>
+        Worked on fintech infrastructure, payment reliability, AI-powered payroll intelligence, GraphQL and REST APIs, CLI automation, testing, and security review.
+    </p>
+    <p>
+        Salesfinity.ai | Software Engineer, Contract | 2025<br>
+        Built and deployed an AI support chatbot using Flask and React to handle customer support queries and reduce manual support work.
+    </p>
+    <p>
+        Startup and Hackathon Projects | Full-Stack Developer / Founder / Builder | 2025 - Present<br>
+        Built AI and full-stack products across travel, accessibility, marketing analytics, and mobile-first applications, including NorthBlue, AI Closet, MoveMate, and MarketForge AI.
     </p>
 </section>
 
@@ -269,6 +278,38 @@
 </div>
 
 <section class="articles">
+    <article>
+        <div class="article-wrapper" onclick="openModal('modal8')">
+            <figure>
+                <img src="UI-content/Fixit_Intro.jpg" alt="Fixit preview" />
+            </figure>
+            <div class="article-body">
+                <h2>Fix-It</h2>
+                <p class="article-subtitle">
+                    Team-based software engineering project for reporting, tracking, and managing
+                    local repair or service requests through a full-stack web application
+                </p>
+                <img class="article-logo" src="UI-content/react.png" alt="React logo" />
+                <img class="article-logo" src="UI-content/python.png" alt="Python logo" />
+            </div>
+        </div>
+    </article>
+    <article>
+        <div class="article-wrapper" onclick="openModal('modal7')">
+            <figure>
+                <img class="project-w-card-media" src="UI-content/Project_W_intro.gif" alt="AI Wardrobe preview" />
+            </figure>
+            <div class="article-body">
+                <h2>AI Wardrobe 🏅</h2>
+                <p class="article-subtitle">
+                    AI-powered wardrobe assistant built with Flutter, FastAPI, MongoDB, and vector search
+                    to analyze clothing and give outfit recommendations
+                </p>
+                <img class="article-logo" src="UI-content/python.png" alt="Python logo" />
+                <img class="article-logo" src="UI-content/flutter.png" alt="Flutter logo" />
+            </div>
+        </div>
+    </article>
     <article>
         <div class="article-wrapper" onclick="openModal('modal6')">
             <figure>
@@ -313,6 +354,7 @@
                     Created AI Chatbot using Google Gemini AI API and with full integration of MySQL for user profiles and datasets
                 </p>
                 <img class="article-logo" src="UI-content/sql_server.png" alt="PNG" />
+                <img class="article-logo" src="UI-content/react.png" alt="React logo" />
 
             </div>
         </div>
@@ -366,43 +408,66 @@
 </section>
 
 <script>
+    var activeModalId = null;
+
     function openModal(modalId) {
+        closeAllModals(false);
+
         var modal = document.getElementById(modalId);
+        if (!modal) return;
+
         modal.classList.add("show");
         document.body.style.overflow = "hidden";
-        // Add a new history entry
-        history.pushState({ modalId: modalId }, null, null);
+        activeModalId = modalId;
+
+        if (!history.state || history.state.modalId !== modalId) {
+            history.pushState({ modalId: modalId }, "", window.location.href);
+        }
     }
 
-
-    function closeModal(modalId) {
+    function closeModal(modalId, updateHistory) {
         var modal = document.getElementById(modalId);
+        if (!modal) return;
+
         modal.classList.remove("show");
         document.body.style.overflow = "auto";
-        // Remove the last history entry
-        history.back();
+        activeModalId = null;
+
+        if (updateHistory !== false && history.state && history.state.modalId === modalId) {
+            history.back();
+        }
     }
 
-
-    window.addEventListener('popstate', function(event) {
-        if (event.state && event.state.modalId) {
-            // If there's a modalId in the state, close the corresponding modal
-            closeModal(event.state.modalId);
-        } else {
-            // If there's no state or modalId, ensure all modals are closed
-            closeAllModals();
-        }
-    });
-
-    function closeAllModals() {
+    function closeAllModals(updateHistory) {
         var modals = document.getElementsByClassName('modal');
         for (var i = 0; i < modals.length; i++) {
             modals[i].classList.remove('show');
         }
         document.body.style.overflow = 'auto';
+        activeModalId = null;
+
+        if (updateHistory !== false && history.state && history.state.modalId) {
+            history.back();
+        }
     }
+
+    window.addEventListener('popstate', function() {
+        closeAllModals(false);
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target.classList && event.target.classList.contains('modal')) {
+            closeModal(event.target.id);
+        }
+    });
+
+    window.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && activeModalId) {
+            closeModal(activeModalId);
+        }
+    });
 </script>
-    
+
 <div id="modal1" class="modal">
     <div class="modal-content">
         <span class="closeBtn" onclick="closeModal('modal1')">&times;</span>
@@ -500,10 +565,10 @@
         <div class="content-wrapper">
             <div class="left-section">
                 <video class="big-image" autoplay loop muted>
-                <div class="video-text">Loading video...</div>
-                <source src="UI-content/NetworkX_1.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+                    <div class="video-text">Loading video...</div>
+                    <source src="UI-content/NetworkX_1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
                 <div class="small-images">
                     <img src="UI-content/NetworkX_2.png" alt="Image 2" class="small-image">
                     <img src="UI-content/NetworkX_3.png" alt="Image 3" class="small-image">
@@ -621,7 +686,7 @@
                         <a href="https://github.com/Armankd1/SFHacks2025" class="link-button" style="font-family: Consolas,
                         monospace; font-size: 19px;" target="_blank">Source Code</a>
                         <a href="https://devpost.com/software/movemate-3hrcj5" class="link-button" style="font-family: Consolas, monospace; font-size: 19px;" target="_blank">DevPost</a>
-                </div>
+                    </div>
 
                 </div>
             </div>
@@ -671,6 +736,90 @@
         </div>
     </div>
 </div>
+<div id="modal7"  class="modal project-w-modal">
+    <div class="modal-content">
+        <span class="closeBtn" onclick="closeModal('modal7')">&times;</span>
+        <div class="content-wrapper">
+            <div class="left-section">
+                <video class="big-image project-w-vertical-media" autoplay loop muted playsinline>
+                    <div class="video-text">Loading video...</div>
+                    <source src="UI-content/Project_W_1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="small-images">
+                    <img src="UI-content/Project_W_2.jpg" alt="AI Wardrobe screenshot 1" class="small-image">
+                    <img src="UI-content/Project_W_3.jpg" alt="AI Wardrobe screenshot 2" class="small-image">
+                </div>
+            </div>
+            <div class="right-section">
+                <div class="text-content">
+                    <h1 style="font-family: Consolas, monospace; font-size: 40px; color: black;">AI Wardrobe</h1>
+                    <h2 style="font-family: Consolas, monospace; font-size: 20px; color: black; margin-top: -15px;">Mobile AI Closet Assistant</h2>
+                    <p style="font-family: Consolas, monospace; font-size: 18px; color: black; margin-top: 5px;">
+                        Hackathon Winner 🏅 AI Wardrobe is a mobile-first closet assistant designed to help users manage clothing items
+                        and generate smarter outfit recommendations. The project uses a Flutter frontend with a
+                        FastAPI backend, MongoDB storage, and VectorAI-based search for wardrobe item matching
+                        and recommendation workflows.<br><br>
+                        <span class="mobile-text-hide">&nbsp;This project features:</span>
+                        <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• Flutter mobile interface for wardrobe management</span>
+                        <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• FastAPI backend with MongoDB integration</span>
+                        <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• VectorAI database setup for similarity search and item matching</span>
+                        <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• Docker and Render configuration for backend deployment</span>
+                    </p>
+                </div>
+                <div class="link-buttons">
+                    <a href="https://flutter.dev/" target="_blank">
+                        <img src="UI-content/flutter.png" alt="Flutter logo">
+                    </a>
+                    <div class="link-button-container">
+                        <a href="https://github.com/Akmalchan/projectw"
+                           class="link-button" style="font-family: Consolas, monospace; font-size: 19px;" target="_blank">Source Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal8" class="modal">
+    <div class="modal-content">
+        <span class="closeBtn" onclick="closeModal('modal8')">&times;</span>
+        <div class="content-wrapper">
+            <div class="left-section">
+                <img src="UI-content/Fixit_1.jpg" alt="Fixit main preview" class="big-image">
+                <div class="small-images">
+                    <img src="UI-content/Fixit_2.jpg" alt="Fixit screenshot 1" class="small-image">
+                    <img src="UI-content/Fixit_3.jpg" alt="Fixit screenshot 2" class="small-image">
+                </div>
+            </div>
+            <div class="right-section">
+                <div class="text-content">
+                    <h1 style="font-family: Consolas, monospace; font-size: 40px; color: black;">Fix-It</h1>
+                    <h2 style="font-family: Consolas, monospace; font-size: 20px; color: black; margin-top: -15px;">Full-Stack Software Engineering Project / SFSU CSC648</h2>
+                    <p style="font-family: Consolas, monospace; font-size: 18px; color: black; margin-top: 5px;">
+                        Fixit is a team-based full-stack web application built for San Francisco State University's
+                        CSC648 Software Engineering course. The project focuses on real-world software engineering
+                        workflow, including frontend development, backend integration, milestones, documentation,
+                        deployment planning, and team-based delivery.<br><br>
+                        <span class="mobile-text-hide">&nbsp;This project features:</span>
+                        <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• Full-stack application structure with separate frontend and backend codebases</span>
+                        <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• TypeScript-based frontend development</span>
+                        <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• Python backend development and service integration</span>
+                        <span class="mobile-text-hide" style="display: block; margin-top: 10px;">• Team-based software engineering workflow with milestones and deployment planning</span>
+                    </p>
+                </div>
+                <div class="link-buttons">
+                    <a href="https://fixits.works/" target="_blank">
+                        <img src="UI-content/react.png" alt="React logo">
+                    </a>
+                    <div class="link-button-container">
+                        <a href="https://github.com/Akmalchan/fixit-sfsu-csc648"
+                           class="link-button" style="font-family: Consolas, monospace; font-size: 19px;" target="_blank">Source Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--CONTACT INFO SECTION---------------------------------------------------------------------->
 <hr class="separator">
@@ -696,9 +845,8 @@
 
 <!--FOOTER------------------------------------------------------------------------------------>
 <div class="version"  style="font-family: Consolas, monospace; color: rgba(255, 255, 255, 0.40); font-size: 16px">
-    Open Sharing, Shovkatov Akmal, March 2026 ver.01030032026
+    Open Sharing, Shovkatov Akmal, June 2026 ver.01223062026
 </div>
 
 </body>
-<meta name="viewport" content="width=640"/>
 </html>
