@@ -74,13 +74,13 @@
             <rect x="33%" y="17%" width="110" height="110" fill="#222222" opacity="0.97" />
             <text x="28%" y="47%" class="svg-text">Akmal</text>
             <text x="15%" y="57%" class="svg-text">Shovkatov</text>
-            <image x="34%" y="18%" width="100" height="100" href="UI-content/Photo1.png"/>
+            <image x="34%" y="18%" width="100" height="100" href="UI-content/Photo1.webp"/>
         </g>
     </svg>
 </header>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 <script>
     var pcAnimationStarted = false;
     var mobileAnimationStarted = false;
@@ -199,7 +199,7 @@
             .to($c9, { duration: bullseyeDur * 0.5, attr: { r: 30 }, ease: bullseyeEase }, bullseyeDur * 0.5);
     }
 
-    window.addEventListener('load', loadSvgForScreenSize);
+    window.addEventListener('DOMContentLoaded', loadSvgForScreenSize);
     window.addEventListener('resize', loadSvgForScreenSize);
 </script>
 

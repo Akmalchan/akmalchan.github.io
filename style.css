@@ -430,41 +430,6 @@ article:has(:hover, :focus) {
     }
 }
 
-
-/*-- PROJECT W / AI WARDROBE VERTICAL MEDIA FIX ----------------------------*/
-.project-w-modal .left-section {
-    background: linear-gradient(135deg, #4a4a4a 0%, #777777 45%, #3a3a3a 100%);
-    border-radius: 12px;
-    overflow: hidden;
-    padding: 12px;
-}
-
-.project-w-modal .big-image,
-.project-w-modal .project-w-vertical-media {
-    object-fit: contain;
-    background: radial-gradient(circle at center, #777777 0%, #4d4d4d 55%, #2e2e2e 100%);
-}
-
-.project-w-modal .small-image {
-    object-fit: contain;
-    background: radial-gradient(circle at center, #777777 0%, #4d4d4d 55%, #2e2e2e 100%);
-}
-
-
-/*-- PROJECT W / AI WARDROBE CARD VERTICAL PREVIEW FIX ---------------------*/
-.article-wrapper:has(.project-w-card-media) figure {
-    background: radial-gradient(circle at center, #777777 0%, #4d4d4d 55%, #2e2e2e 100%);
-}
-
-.article-wrapper:has(.project-w-card-media) figure img.project-w-card-media {
-    width: calc(100% - 32px);
-    height: 100%;
-    max-width: calc(100% - 32px);
-    object-fit: contain;
-    border-radius: 16px;
-}
-
-
 /*-- MOBILE OPTIMIZER ------------------------------------------------------*/
 @media screen and (max-width: 960px) {
     .articles {
